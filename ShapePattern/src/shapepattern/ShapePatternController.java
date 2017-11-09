@@ -24,10 +24,10 @@ import javafx.scene.control.TextField;
 
 /**
  *
- * @author mr.Andersen
+ * @author Jacob, Bastian, Dusan & Kristofer
  */
-public class ShapePatternController implements Initializable {
-    
+public class ShapePatternController implements Initializable 
+{
     @FXML
     private Label label;
     @FXML
@@ -50,21 +50,19 @@ public class ShapePatternController implements Initializable {
     @FXML
     private ComboBox<String> gridPane;
     int counter=0;
-  
+    
+    // Button to add to list
     @FXML
     private void handleButtonAction(ActionEvent event) 
     {
-        
-        
         Integer listBox= Integer.parseInt(sizeInput.getText());
         rectangle = selectShape.getValue();
         selectShape.getValue();
         Shape shape= new Shape();
         allListBox.add(rectangle + " " + listBox); 
         counter=0;
-       
-     }
-    
+    }
+    // Creates options for the comboboxes, selecting shapes / patterns.  
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -73,24 +71,30 @@ public class ShapePatternController implements Initializable {
         selectShape.getItems().removeAll(selectShape.getItems());
         selectShape.getItems().addAll("Triangle", "Circle","Rectangle");
         selectShape.getSelectionModel().select("Triangle");
-         gridPane.getItems().removeAll(gridPane.getItems());
+        gridPane.getItems().removeAll(gridPane.getItems());
         gridPane.getItems().addAll("Cross", "Grid","Random");
         gridPane.getSelectionModel().select("Grid");
-     }    
+    }
+    
+    // Function to draw the shapes in the ontroller, calls the Shape class
     @FXML
-    private void DrawShapes(ActionEvent event) {
-     
-        Shape draw=new Shape();
+    private void DrawShapes(ActionEvent event) 
+    {
+        Shape draw = new Shape();
         draw.shapeList(allListBox,canvas.getGraphicsContext2D(),gridPane.getValue());
         counter=0;
     }
 
-
+    // Function to clear the canvas, clears the canvas when you press clear canvas
     @FXML
-    private void clearing(ActionEvent event) {
-       
-     canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(),canvas.getHeight());
-     allListBox.clear();
-     
+    private void clearingCanvas(ActionEvent event) 
+    {
+        canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(),canvas.getHeight());     
+    }
+    // Function to clear the List, clears the list when you press clear list
+    @FXML
+    private void clearingList(ActionEvent event) 
+    {
+        allListBox.clear();
     }
 }

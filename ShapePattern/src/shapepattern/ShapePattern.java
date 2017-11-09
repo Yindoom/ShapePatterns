@@ -13,12 +13,14 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author mr.Andersen
+ * @author Jacob, Bastian, Dusan & Kristofer
  */
-public class ShapePattern extends Application {
+public class ShapePattern extends Application 
+{
     
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws Exception 
+    {
         Parent root = FXMLLoader.load(getClass().getResource("ShapeUI.fxml"));
         
         Scene scene = new Scene(root);
